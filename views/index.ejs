@@ -1,0 +1,28 @@
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <form action="/" method="post">
+    <fieldset>
+      <legend>Color:</legend>
+      <input type="submit" name="bgcolor" value="blue">
+      <input type="submit" name="bgcolor" value="yellow">
+      <input type="submit" name="bgcolor" value="red">
+      <input type="submit" name="bgcolor" value="green">
+    </fieldset>
+    <fieldset>
+      <legend>Size:</legend>
+      <input type="submit" name="size" value="xs">
+      <input type="submit" name="size" value="s">
+      <input type="submit" name="size" value="m">
+      <input type="submit" name="size" value="l">
+      <input type="submit" name="size" value="xl">
+    </fieldset>
+    <fieldset>
+      <legend>Sex:</legend>
+      <input type="submit" name="sex" value="male">
+      <input type="submit" name="sex" value="female">
+    </fieldset>
+  </form>
+  <%- include('partials/shirt') %>
+</body>

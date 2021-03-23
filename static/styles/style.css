@@ -35,3 +35,7 @@ input {
   color: var(--color-background);
   padding: 1rem;
 }
+
+input.active {
+  color: red;
+}

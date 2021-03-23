@@ -1,0 +1,5 @@
+<% for (value of valueList) { %>
+  <% let current = false %>
+  <% if (value === locals[name]) current = true %>
+  <%- include('submit-button', {name: name, value: value, active: current}) %>
+<% } %>

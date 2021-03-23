@@ -1,0 +1,15 @@
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <h1>Your Shirts</h1>
+  <% if (locals.userData) { %>
+    <% for (shirt of Object.keys(userData.shirts)) { %>
+      <p>
+      <% for (setting of Object.keys(shirtData)) { %>
+        <%= userData.shirts[shirt][setting] %>
+      <% } %>
+      </p>
+    <% } %>
+  <% } %>
+</body>

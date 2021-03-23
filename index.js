@@ -1,8 +1,11 @@
 const express = require('express');
 const url = require('url');
 const app = express();
+const fingerprint = require('express-fingerprint');
+const { getUserData, storeNewShirt } = require('./modules/userDataHandler');
 const { queryToObject, cleanUpQuery } = require('./modules/queryTools');
-const { shirtData } = require('./data/data');
+const { shirtData } = require('./data/appData');
+const { userData } = require('./data/userData');
 
 // Set view engine to ejs
 app.set('view engine', 'ejs');
@@ -10,7 +13,10 @@ app.set('view engine', 'ejs');
 // Set static folder
 app.use(express.static('static'));
 
+// Body parsing middleware
 app.use(express.urlencoded({extended:true}));
+
+app.use(fingerprint());
 
 // Open app on port
 const port = process.env.PORT || 3000;
@@ -35,15 +41,23 @@ app.post('/', (req, res) => {
       ...queryString,
       ...req.body,
     }),
+
   }));
 });
 
-app.get('/checkout', (req, res) => {
-  res.render('checkout')
-})
+// Get shirt data
+app.get('/shirts', (req, res) => {
+  const userData = getUserData(req.fingerprint.hash);
+  console.log(userData);
+  res.render('shirts', {
+    shirtData,
+    userData,
+  });
+});
 
-app.post('/checkout', (req, res) => {
+// Post shirt data
+app.post('/shirts', (req, res) => {
   const queryString = queryToObject(req.headers.referer);
-
-  res.redirect('/checkout')
-})
+  const userData = storeNewShirt(req.fingerprint.hash, cleanUpQuery(queryString));
+  res.redirect('/shirts');
+});

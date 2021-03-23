@@ -3,16 +3,16 @@
 </head>
 <body>
   <form action="/" method="post">
-    <% const shirtSettings = Object.keys(shirtData) %>
-    <% for (setting of shirtSettings) { %>
+    <% for (setting of Object.keys(shirtData)) { %>
       <fieldset>
         <legend><%= shirtData[setting].title %>:</legend>
         <%- include('partials/button-list', {valueList: shirtData[setting].options, name: setting}) %>
       </fieldset>
     <% } %>
   </form>
-  <form action="/checkout" method="post">
-    <button type="submit" name="save" value="true">Save</button>
+  <form action="/shirts" method="post">
+    <button type="submit">Save</button>
   </form>
   <%- include('partials/shirt') %>
+  <a href="/shirts">View your shirts</a>
 </body>

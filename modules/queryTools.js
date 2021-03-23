@@ -1,9 +1,8 @@
-const { shirtData } = require('../data/data');
+const { shirtData } = require('../data/appData');
 
 exports.queryToObject = (location) => {
   if (location.includes('?')) {
     let queryString = location.split('?').pop();
-    console.log(queryString)
     return JSON.parse('{"' + queryString
       .replace(/&/g, '","')
       .replace(/=/g,'":"') + '"}', (key, value) => {

@@ -1,5 +1,6 @@
 const { shirtData } = require('../data/appData');
 
+// Converts query string to object
 exports.queryToObject = (location) => {
   if (location.includes('?')) {
     let queryString = location.split('?').pop();
@@ -12,6 +13,7 @@ exports.queryToObject = (location) => {
   }
 }
 
+// Removes unused keys from query
 exports.cleanUpQuery = (queryString) => {
   const filteredQueryString = {}
   for (let key of Object.keys(queryString)) {
@@ -19,5 +21,16 @@ exports.cleanUpQuery = (queryString) => {
       filteredQueryString[key] = queryString[key]
     }
   }
-  return filteredQueryString;
+  return this.validateQuery(filteredQueryString);
+}
+
+// Validates query, replaces with default value if invalid or missing
+exports.validateQuery = (query) => {
+  for (option of Object.keys(shirtData)) {
+    if (!query[option] || !shirtData[option].options.includes(query[option])) {
+      console.log(query)
+      query[option] = shirtData[option].default;
+    }
+  }
+  return query
 }

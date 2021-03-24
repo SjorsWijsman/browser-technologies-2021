@@ -4,11 +4,16 @@
   <%- include('partials/head') %>
 </head>
 <body>
+  <header>
+    <nav>
+      <a href="/shirts">View your shirts</a>
+    </nav>
+  </header>
   <main>
-    <section>
+    <section class="shirt-container">
       <%- include('partials/shirt') %>
     </section>
-    <section>
+    <section class="options-container">
       <form action="/" method="post">
         <% for (setting of Object.keys(shirtData)) { %>
           <fieldset>
@@ -22,8 +27,5 @@
       </form>
     </section>
   </main>
-  <footer>
-    <a href="/shirts">View your shirts</a>
-  </footer>
 </body>
 </html>

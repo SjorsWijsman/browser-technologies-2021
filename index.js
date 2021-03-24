@@ -2,8 +2,8 @@ const express = require('express');
 const url = require('url');
 const app = express();
 const fingerprint = require('express-fingerprint');
-const { getUserData, storeNewShirt } = require('./modules/userDataHandler');
-const { queryToObject, cleanUpQuery } = require('./modules/queryTools');
+const { getUserData, storeNewShirt, removeShirt } = require('./modules/userDataHandler');
+const { queryToObject, cleanUpQuery, validateQuery } = require('./modules/queryTools');
 const { shirtData } = require('./data/appData');
 const { userData } = require('./data/userData');
 
@@ -25,9 +25,10 @@ console.log(`App listening on ${port}`);
 
 // Home page
 app.get('/', (req, res) => {
+  const query = validateQuery(req.query);
   res.render('index', {
     shirtData,
-    ...req.query,
+    ...query,
   });
 });
 
@@ -35,20 +36,20 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const queryString = queryToObject(req.headers.referer);
 
+  const query = cleanUpQuery({
+    ...queryString,
+    ...req.body,
+  });
+
   res.redirect(url.format({
     pathname: '/',
-    query: cleanUpQuery({
-      ...queryString,
-      ...req.body,
-    }),
-
+    query: query,
   }));
 });
 
 // Get shirt data
 app.get('/shirts', (req, res) => {
   const userData = getUserData(req.fingerprint.hash);
-  console.log(userData);
   res.render('shirts', {
     shirtData,
     userData,
@@ -61,3 +62,10 @@ app.post('/shirts', (req, res) => {
   const userData = storeNewShirt(req.fingerprint.hash, cleanUpQuery(queryString));
   res.redirect('/shirts');
 });
+
+app.post('/removeshirt', (req, res) => {
+  if (req.body.delete) {
+    removeShirt(req.fingerprint.hash, parseInt(req.body.delete))
+  }
+  res.redirect('/shirts')
+})

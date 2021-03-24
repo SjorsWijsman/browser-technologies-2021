@@ -4,8 +4,13 @@
   <%- include('partials/head') %>
 </head>
 <body>
+  <header>
+    <nav>
+      <a href="/">Create a shirt</a>
+    </nav>
+  </header>
   <h1>Your Shirts</h1>
-  <% if (locals.userData) { %>
+  <% if (locals.userData && locals.userData.shirts && locals.userData.shirts.length > 0) { %>
     <ol>
       <% for ([i, shirt] of Object.keys(userData.shirts).entries()) { %>
         <li>
@@ -14,7 +19,9 @@
             <%= userData.shirts[shirt][setting] %>
           <% } %>
           </a>
-          <button type="button" name="button">Delete</button>
+          <form action="removeshirt" method="post">
+            <input type="submit" name="delete" value="<%= i %>"/>
+          </form>
         </li>
       <% } %>
     </ol>

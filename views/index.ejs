@@ -1,18 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
   <%- include('partials/head') %>
 </head>
 <body>
-  <form action="/" method="post">
-    <% for (setting of Object.keys(shirtData)) { %>
-      <fieldset>
-        <legend><%= shirtData[setting].title %>:</legend>
-        <%- include('partials/button-list', {valueList: shirtData[setting].options, name: setting}) %>
-      </fieldset>
-    <% } %>
-  </form>
-  <form action="/shirts" method="post">
-    <button type="submit">Save</button>
-  </form>
-  <%- include('partials/shirt') %>
-  <a href="/shirts">View your shirts</a>
+  <main>
+    <section>
+      <%- include('partials/shirt') %>
+    </section>
+    <section>
+      <form action="/" method="post">
+        <% for (setting of Object.keys(shirtData)) { %>
+          <fieldset>
+            <legend><%= shirtData[setting].title %>:</legend>
+            <%- include('partials/button-list', {valueList: shirtData[setting].options, name: setting}) %>
+          </fieldset>
+        <% } %>
+      </form>
+      <form action="/shirts" method="post">
+        <button type="submit">Save Shirt</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <a href="/shirts">View your shirts</a>
+  </footer>
 </body>
+</html>

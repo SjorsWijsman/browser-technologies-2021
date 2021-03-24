@@ -1,15 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
   <%- include('partials/head') %>
 </head>
 <body>
   <h1>Your Shirts</h1>
   <% if (locals.userData) { %>
-    <% for (shirt of Object.keys(userData.shirts)) { %>
-      <p>
-      <% for (setting of Object.keys(shirtData)) { %>
-        <%= userData.shirts[shirt][setting] %>
+    <ol>
+      <% for ([i, shirt] of Object.keys(userData.shirts).entries()) { %>
+        <li>
+          <a href="../?color=<%= userData.shirts[shirt].color %>&size=<%= userData.shirts[shirt].size %>&sex=<%= userData.shirts[shirt].sex %>">
+          <% for (setting of Object.keys(shirtData)) { %>
+            <%= userData.shirts[shirt][setting] %>
+          <% } %>
+          </a>
+          <button type="button" name="button">Delete</button>
+        </li>
       <% } %>
-      </p>
-    <% } %>
+    </ol>
+  <% } else { %>
+    <p>You don't have any shirts saved. Start creating your first shirt <a href="../">here</a>!</p>
   <% } %>
 </body>
+</html>

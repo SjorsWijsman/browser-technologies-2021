@@ -63,9 +63,9 @@ app.post('/shirts', (req, res) => {
   res.redirect('/shirts');
 });
 
-app.post('/removeshirt', (req, res) => {
+app.post('/removeshirt/:index', (req, res) => {
   if (req.body.delete) {
-    removeShirt(req.fingerprint.hash, parseInt(req.body.delete))
+    removeShirt(req.fingerprint.hash, parseInt(req.params.index))
   }
   res.redirect('/shirts')
 })

@@ -47,12 +47,6 @@ nav {
 
 nav > a {
   padding: 1rem;
-  transition: all .1s;
-}
-
-nav > a:hover, nav > a:focus {
-  transform: scale(1.1);
-  text-decoration: none;
 }
 
 

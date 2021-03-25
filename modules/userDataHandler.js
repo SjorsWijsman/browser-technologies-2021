@@ -28,10 +28,8 @@ exports.storeNewShirt = (user, shirtData) => {
 }
 
 exports.removeShirt = (user, shirtIndex) => {
-  console.log(user, shirtIndex);
   let userData = this.getAllData();
 
-  console.log(userData[user].shirts)
   userData[user].shirts = userData[user].shirts.filter((value, index) => {
     return index !== shirtIndex
   })

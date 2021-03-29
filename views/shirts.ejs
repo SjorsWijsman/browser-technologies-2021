@@ -19,6 +19,8 @@
               <a href=<%= `../?color=${userData.shirts[shirt].color}&size=${userData.shirts[shirt].size}&sex=${userData.shirts[shirt].sex}` %>>
               <% for (setting of Object.keys(shirtData)) { %>
                 <%= userData.shirts[shirt][setting] %>
+              <% } if (userData.shirts[shirt].text) { %>
+                - <%= userData.shirts[shirt].text %>
               <% } %>
               </a>
               <form action="ordershirt/<%= i %>" method="post">
@@ -37,7 +39,11 @@
       <% } %>
     </section>
     <section>
-      <h1>Current Order</h1>    
+      <h1>Current Order</h1>
+      <%- include('partials/order-list') %>
+      <form action="/order" method="get">
+        <button type="submit" class="confirm">Order</button>
+      </form>
     </section>
   </main>
 </body>

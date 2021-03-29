@@ -1,0 +1,19 @@
+<% if (locals.userData && locals.userData.order && locals.userData.order.length > 0) { %>
+<ol>
+  <% for ([i, order] of locals.userData.order.entries()) { %>
+    <li>
+      <p>
+        <%= order.color %> <%= order.size %> <%= order.sex %>
+        <% if (order.text) { %>
+          - <%= order.text %>
+        <% } %>
+      </p>
+      <form action="removeorder/<%= i %>" method="post">
+        <button type="submit" class="warning">x</button>
+      </form>
+    </li>
+  <% } %>
+</ol>
+<% } else { %>
+<p>Your order is empty</p>
+<% } %>

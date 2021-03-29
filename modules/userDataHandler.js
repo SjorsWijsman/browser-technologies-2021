@@ -36,3 +36,30 @@ exports.removeShirt = (user, shirtIndex) => {
 
   fs.writeFileSync('./data/userData.json', JSON.stringify(userData))
 }
+
+exports.addOrder = (user, shirtIndex) => {
+  const userData = this.getAllData();
+
+  if (!userData[user] || !userData[user].order) {
+    userData[user] = {
+      ...userData[user],
+      order: [],
+    }
+  }
+
+  userData[user].order.push(userData[user].shirts[shirtIndex])
+
+  fs.writeFileSync('./data/userData.json', JSON.stringify(userData))
+}
+
+exports.removeOrder = (user, orderIndex) => {
+  let userData = this.getAllData();
+
+  userData[user].order = userData[user].order.filter((value, index) => {
+    return index !== orderIndex
+  })
+
+  console.log(userData[user].order)
+
+  fs.writeFileSync('./data/userData.json', JSON.stringify(userData))
+}

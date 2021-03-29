@@ -34,7 +34,7 @@ main {
   display: grid;
   grid-template-columns: 3fr 2fr;
   min-height: 100%;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
 }
 
 @media only screen and (max-width: 50rem) {
@@ -58,6 +58,10 @@ nav {
 
 nav > a {
   padding: 1rem;
+}
+
+p {
+  margin: 1rem;
 }
 
 .warning {
@@ -105,13 +109,14 @@ section.options-container {
   flex-direction: column;
 }
 
-input[type="submit"], button {
+input[type="submit"], button, a.button {
   color: var(--color-background);
   padding: 1rem;
   margin: 0.5rem 0;
   border: 0;
   cursor: pointer;
   flex-basis: 100%;
+  text-decoration: none;
 }
 
 input[type="submit"].active {

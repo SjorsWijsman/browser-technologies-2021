@@ -2,8 +2,8 @@ const express = require('express');
 const url = require('url');
 const app = express();
 const fingerprint = require('express-fingerprint');
-const { getUserData, storeNewShirt, removeShirt } = require('./modules/userDataHandler');
-const { queryToObject, cleanUpQuery, validateQuery } = require('./modules/queryTools');
+const { getUserData, storeNewShirt, removeShirt, addOrder, removeOrder } = require('./modules/userDataHandler');
+const { queryToObject } = require('./modules/queryTools');
 const { shirtData } = require('./data/appData');
 const { userData } = require('./data/userData');
 
@@ -26,7 +26,7 @@ console.log(`App listening on ${port}`);
 
 // Home page
 app.get('/', (req, res) => {
-  const query = validateQuery(req.query);
+  const query = req.query;
   res.render('index', {
     shirtData,
     ...query,
@@ -41,10 +41,6 @@ app.post('/', (req, res) => {
     ...queryString,
     ...req.body,
   };
-
-  if (!req.body.text) {
-    query = cleanUpQuery(query);
-  }
 
   res.redirect(url.format({
     pathname: '/',
@@ -65,7 +61,7 @@ app.get('/shirts', (req, res) => {
 // Post shirt data
 app.post('/shirts', (req, res) => {
   const queryString = queryToObject(req.headers.referer);
-  const userData = storeNewShirt(req.fingerprint.hash, cleanUpQuery(queryString));
+  const userData = storeNewShirt(req.fingerprint.hash, queryString);
   res.redirect('/shirts');
 });
 
@@ -79,15 +75,27 @@ app.post('/removeshirt/:index', (req, res) => {
 
 // Order overview
 app.get('/order', (req, res) => {
-  res.render('order')
+  const userData = getUserData(req.fingerprint.hash);
+  res.render('order', {
+    userData,
+  })
 })
 
 app.post('/ordershirt/:index', (req, res) => {
-  res.redirect('/order')
+  addOrder(req.fingerprint.hash, parseInt(req.params.index))
+  res.redirect(req.headers.referer)
+})
+
+app.post('/removeorder/:index', (req, res) => {
+  removeOrder(req.fingerprint.hash, parseInt(req.params.index))
+  res.redirect(req.headers.referer)
 })
 
 
 // Order confirmation
 app.post('/order-confirmation', (req, res) => {
-  res.render('order-confirmation')
+  const userData = getUserData(req.fingerprint.hash);
+  res.render('order-confirmation', {
+    userData,
+  })
 })

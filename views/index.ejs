@@ -17,11 +17,12 @@
       <form action="/" method="post">
         <fieldset>
           <legend>Text:</legend>
-          <input type="text" name="text" placeholder="Your text here" maxlength="20" value="<%= locals.text %>">
-          <button type="submit">Update</button>
+          <input type="text" name="text" placeholder="Your text here"
+            maxlength="20" value="<%= locals.text %>" oninput="updateText(this)">
+          <button type="submit" id="text-update-button">Update</button>
         </fieldset>
       </form>
-      <form action="/" method="post">
+      <form action="/" method="post" id="shirt-settings">
         <% for (setting of Object.keys(shirtData)) { %>
           <fieldset>
             <legend><%= shirtData[setting].title %>:</legend>
@@ -35,4 +36,5 @@
     </section>
   </main>
 </body>
+<script src="scripts/script.js" charset="utf-8"></script>
 </html>

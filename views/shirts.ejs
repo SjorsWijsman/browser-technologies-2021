@@ -16,7 +16,7 @@
         <ol>
           <% for ([i, shirt] of Object.keys(userData.shirts).entries()) { %>
             <li>
-              <a href=<%= `../?color=${userData.shirts[shirt].color}&size=${userData.shirts[shirt].size}&sex=${userData.shirts[shirt].sex}` %>>
+              <a href=<%= `../?color=${userData.shirts[shirt].color}&size=${userData.shirts[shirt].size}&sex=${userData.shirts[shirt].sex}`%><% if (userData.shirts[shirt].text) { %><%= '&text=' + userData.shirts[shirt].text %><%}%>>
               <% for (setting of Object.keys(shirtData)) { %>
                 <%= userData.shirts[shirt][setting] %>
               <% } if (userData.shirts[shirt].text) { %>
@@ -41,9 +41,11 @@
     <section>
       <h1>Current Order</h1>
       <%- include('partials/order-list') %>
+      <% if (locals.userData && locals.userData.order && locals.userData.order.length > 0) { %>
       <form action="/order" method="get">
         <button type="submit" class="confirm">Order</button>
       </form>
+      <% } %>
     </section>
   </main>
 </body>

@@ -1,11 +1,24 @@
 <p id="shirt-text">
   <%= locals.text %>
 </p>
+<% if (locals.sex === 'Male') { %>
 <svg
   class="shirt"
+  id="shirt"
   xmlns="http://www.w3.org/2000/svg"
   width="630"
   height="500"
   viewBox="0 0 1260 1000">
   <path fill= <%= locals.color %> d="M 305,4 5,351 219,496 308,394 V 996 H 953 V 394 L 1041,496 1255,351 956,4 H 850 A 248,248 0 0 1 630,151 C 535,151 453,92 410,4 Z"/>
 </svg>
+<% } else { %>
+<svg
+  class="shirt"
+  id="shirt"
+  xmlns="http://www.w3.org/2000/svg"
+  width="630"
+  height="500"
+  viewBox="0 0 1080.647 992">
+  <path fill= <%= locals.color %> d="M264.355,4,5,351,190.007,496l76.942-102V996H824.563V394L900.64,496l185.007-145L827.156,4H735.517C701.9,91.295,627.911,148.48,545.323,151,463.194,151,392.3,92,355.13,4Z"/>
+</svg>
+<% } %>

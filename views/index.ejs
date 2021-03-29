@@ -15,6 +15,13 @@
     </section>
     <section class="options-container">
       <form action="/" method="post">
+        <fieldset>
+          <legend>Text:</legend>
+          <input type="text" name="text" placeholder="Your text here" maxlength="20" value="<%= locals.text %>">
+          <button type="submit">Update</button>
+        </fieldset>
+      </form>
+      <form action="/" method="post">
         <% for (setting of Object.keys(shirtData)) { %>
           <fieldset>
             <legend><%= shirtData[setting].title %>:</legend>
@@ -23,7 +30,7 @@
         <% } %>
       </form>
       <form action="/shirts" method="post">
-        <button type="submit">Save Shirt</button>
+        <button type="submit" class="confirm">Save Shirt</button>
       </form>
     </section>
   </main>

@@ -1,7 +1,7 @@
 module.exports.shirtData = {
   'color': {
     'title': 'Color',
-    'options': ['Blue', 'Yellow', 'Red', 'Green'],
+    'options': ['Blue', 'Yellow', 'Red', 'Green', 'Orange'],
     'default': 'Blue',
   },
   'size': {

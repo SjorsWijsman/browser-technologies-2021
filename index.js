@@ -23,6 +23,7 @@ const port = process.env.PORT || 3000;
 app.listen(port);
 console.log(`App listening on ${port}`);
 
+
 // Home page
 app.get('/', (req, res) => {
   const query = validateQuery(req.query);
@@ -36,16 +37,21 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const queryString = queryToObject(req.headers.referer);
 
-  const query = cleanUpQuery({
+  let query = {
     ...queryString,
     ...req.body,
-  });
+  };
+
+  if (!req.body.text) {
+    query = cleanUpQuery(query);
+  }
 
   res.redirect(url.format({
     pathname: '/',
     query: query,
   }));
 });
+
 
 // Get shirt data
 app.get('/shirts', (req, res) => {
@@ -63,9 +69,25 @@ app.post('/shirts', (req, res) => {
   res.redirect('/shirts');
 });
 
+
+// Remove shirt
 app.post('/removeshirt/:index', (req, res) => {
-  if (req.body.delete) {
-    removeShirt(req.fingerprint.hash, parseInt(req.params.index))
-  }
+  removeShirt(req.fingerprint.hash, parseInt(req.params.index))
   res.redirect('/shirts')
+})
+
+
+// Order overview
+app.get('/order', (req, res) => {
+  res.render('order')
+})
+
+app.post('/ordershirt/:index', (req, res) => {
+  res.redirect('/order')
+})
+
+
+// Order confirmation
+app.post('/order-confirmation', (req, res) => {
+  res.render('order-confirmation')
 })

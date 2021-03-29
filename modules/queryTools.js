@@ -28,7 +28,6 @@ exports.cleanUpQuery = (queryString) => {
 exports.validateQuery = (query) => {
   for (option of Object.keys(shirtData)) {
     if (!query[option] || !shirtData[option].options.includes(query[option])) {
-      console.log(query)
       query[option] = shirtData[option].default;
     }
   }

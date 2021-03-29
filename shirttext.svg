@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="992" viewBox="0 0 1250 992">
+  <g id="shirt" transform="translate(4408 5805)">
+    <path id="shirt-2" data-name="shirt" d="M305,4,5,351,219,496l89-102V996H953V394l88,102,214-145L956,4H850A248,248,0,0,1,630,151C535,151,453,92,410,4Z" transform="translate(-4413 -5809)" fill="red"/>
+    <text id="asdfasd" transform="translate(-3783 -5351)" fill="#fff" font-size="50" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-88.9" y="0"><%= locals.text %></tspan></text>
+  </g>
+</svg>

@@ -10,27 +10,35 @@
     </nav>
   </header>
   <main>
-    <h1>Your Shirts</h1>
-    <% if (locals.userData && locals.userData.shirts && locals.userData.shirts.length > 0) { %>
-      <ol>
-        <% for ([i, shirt] of Object.keys(userData.shirts).entries()) { %>
-          <li>
-            <a href=<%= `../?color=${userData.shirts[shirt].color}&size=${userData.shirts[shirt].size}&sex=${userData.shirts[shirt].sex}` %>>
-            <% for (setting of Object.keys(shirtData)) { %>
-              <%= userData.shirts[shirt][setting] %>
-            <% } %>
-            </a>
-            <form action="removeshirt/<%= i %>" method="post">
-              <input type="submit" name="delete" value="Delete"/>
-            </form>
-          </li>
-        <% } %>
-      </ol>
-    <% } else { %>
-      <p>You don't have any shirts saved. Start creating your first shirt
-        <a href=<%= `../?color=${shirtData.color.default}&size=${shirtData.size.default}&sex=${shirtData.sex.default}` %>>here</a>
-      !</p>
-    <% } %>
+    <section>
+      <h1>Your Shirts</h1>
+      <% if (locals.userData && locals.userData.shirts && locals.userData.shirts.length > 0) { %>
+        <ol>
+          <% for ([i, shirt] of Object.keys(userData.shirts).entries()) { %>
+            <li>
+              <a href=<%= `../?color=${userData.shirts[shirt].color}&size=${userData.shirts[shirt].size}&sex=${userData.shirts[shirt].sex}` %>>
+              <% for (setting of Object.keys(shirtData)) { %>
+                <%= userData.shirts[shirt][setting] %>
+              <% } %>
+              </a>
+              <form action="ordershirt/<%= i %>" method="post">
+                <button type="submit">Order</button>
+              </form>
+              <form action="removeshirt/<%= i %>" method="post">
+                <button type="submit" class="warning">Delete</button>
+              </form>
+            </li>
+          <% } %>
+        </ol>
+      <% } else { %>
+        <p>You don't have any shirts saved. Start creating your first shirt
+          <a href=<%= `../?color=${shirtData.color.default}&size=${shirtData.size.default}&sex=${shirtData.sex.default}` %>>here</a>
+        !</p>
+      <% } %>
+    </section>
+    <section>
+      <h1>Current Order</h1>    
+    </section>
   </main>
 </body>
 </html>

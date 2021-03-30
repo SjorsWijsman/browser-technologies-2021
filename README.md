@@ -9,6 +9,7 @@ T Shirts is a progressively enhanced webapp that lets the user customise their o
 <table>
     <tr>
         <td align="center"><a href="#-features">⭐ Features<a></td>
+        <td align="center"><a href="#-wireframes">🏗️ Wireframes<a></td>
         <td align="center"><a href="#%EF%B8%8F-installation">⚙️ Installation<a></td>
         <td align="center"><a href="#-folder-structure">📕 Folder Structure<a></td>
         <td align="center"><a href="#-browsers">🌐 Browsers<a></td>
@@ -20,6 +21,33 @@ T Shirts is a progressively enhanced webapp that lets the user customise their o
 - Customisable shirt with color, size, text & sex without JavaScript,
 - Saving shirts without cookies or localStorage,
 - Order overview & ordering shirts
+
+## 🏗️ Wireframes
+<details>
+  <summary>1. Customise Screen</summary>
+    
+  ![Wireframe 1](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-1.png?raw=true)
+</details>
+<details>
+  <summary>2. Your Saved Shirts</summary>
+    
+  ![Wireframe 2](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-2.png?raw=true)
+</details>
+<details>
+  <summary>3. Your Orders</summary>
+    
+  ![Wireframe 3](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-3.png?raw=true)
+</details>
+<details>
+  <summary>4. Order Details</summary>
+    
+  ![Wireframe 4](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-4.png?raw=true)
+</details>
+<details>
+  <summary>5. Order Confirmation</summary>
+    
+  ![Wireframe 5](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-5.png?raw=true)
+</details>
 
 ## ⚙️ Installation
 Clone repo to local folder. With [NPM](https://www.npmjs.com/) installed, run to install dependencies:

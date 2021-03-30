@@ -1,17 +1,16 @@
-<!-- Add a link to your live demo in Github Pages 🌐-->
 # T Shirts
 Live version: https://floating-tundra-18210.herokuapp.com/?color=Blue&size=M&sex=Male
 
 T Shirts is a progressively enhanced webapp that lets the user customise their own shirt and order it, without having to enable JavaScript or CSS.
 
-![App Screenshot]()
+![App Screenshot](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/screenshot-1.png?raw=true)
 
 ## Table of Contents
 <table>
     <tr>
         <td align="center"><a href="#-features">⭐ Features<a></td>
-        <td align="center"><ahref="#%EF%B8%8Finstallation">⚙️Installation<a><td>
-        <td align="center"><a href="#-docs">📕 Folder Structure<a></td>
+        <td align="center"><a href="#%EF%B8%8F-installation">⚙️ Installation<a></td>
+        <td align="center"><a href="#-folder-structure">📕 Folder Structure<a></td>
         <td align="center"><a href="#-browsers">🌐 Browsers<a></td>
         <td align="center"><a href="#-license">📃 License<a></td>
     </tr>

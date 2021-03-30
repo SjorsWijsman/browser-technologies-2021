@@ -33,7 +33,8 @@ npm run dev
 To reset the userData.json, replace the contents of the file with an empty bracket: `{}`.
 
 ## 📕 Folder Structure
-![Folder Structure]()
+![Folder Structure](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/screenshot-2.png?raw=true)  
+
 `/data` contains both static data for the app and user generated data.  
 `/docs` contains files for the docs you're reading right now.  
 `/modules` contains JavaScript modules used in the Node Backend.  

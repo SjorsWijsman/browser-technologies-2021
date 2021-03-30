@@ -3,6 +3,7 @@
   <% for ([i, order] of locals.userData.order.entries()) { %>
     <li>
       <p>
+        <%= order.count %>x 
         <%= order.color %> <%= order.size %> <%= order.sex %>
         <% if (order.text) { %>
           - <%= order.text %>

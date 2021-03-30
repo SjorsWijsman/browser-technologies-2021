@@ -47,7 +47,25 @@ exports.addOrder = (user, shirtIndex) => {
     }
   }
 
-  userData[user].order.push(userData[user].shirts[shirtIndex])
+  let duplicate = false;
+
+  for (const order of userData[user].order) {
+    const addShirt = userData[user].shirts[shirtIndex]
+    if (order.color === addShirt.color &&
+        order.size === addShirt.size &&
+        order.sex === addShirt.sex &&
+        order.text === addShirt.text) {
+          order.count += 1;
+          duplicate = true;
+        }
+  }
+
+  if (!duplicate) {
+    userData[user].order.push({
+      ...userData[user].shirts[shirtIndex],
+      count: 1,
+    });
+  }
 
   fs.writeFileSync('./data/userData.json', JSON.stringify(userData))
 }

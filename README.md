@@ -11,6 +11,7 @@ T Shirts is a progressively enhanced webapp that lets the user customise their o
 <table>
     <tr>
         <td align="center"><a href="#-features">⭐ Features<a></td>
+        <td align="center"><a href="#-wireframes">🏗️ Wireframes<a></td>
         <td align="center"><a href="#%EF%B8%8F-installation">⚙️ Installation<a></td>
         <td align="center"><a href="#-folder-structure">📕 Folder Structure<a></td>
         <td align="center"><a href="#-browsers">🌐 Browsers<a></td>
@@ -22,6 +23,33 @@ T Shirts is a progressively enhanced webapp that lets the user customise their o
 - Customisable shirt with color, size, text & sex without JavaScript,
 - Saving shirts without cookies or localStorage,
 - Order overview & ordering shirts
+
+## 🏗️ Wireframes
+<details>
+  <summary>1. Customise Screen</summary>
+    
+  ![Wireframe 1](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-1.png?raw=true)
+</details>
+<details>
+  <summary>2. Your Saved Shirts</summary>
+    
+  ![Wireframe 2](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-2.png?raw=true)
+</details>
+<details>
+  <summary>3. Your Orders</summary>
+    
+  ![Wireframe 3](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-3.png?raw=true)
+</details>
+<details>
+  <summary>4. Order Details</summary>
+    
+  ![Wireframe 4](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-4.png?raw=true)
+</details>
+<details>
+  <summary>5. Order Confirmation</summary>
+    
+  ![Wireframe 5](https://github.com/SjorsWijsman/browser-technologies-2021/blob/master/docs/wireframes/wf-5.png?raw=true)
+</details>
 
 ## ⚙️ Installation
 Clone repo to local folder. With [NPM](https://www.npmjs.com/) installed, run to install dependencies:
@@ -46,7 +74,7 @@ To reset the userData.json, replace the contents of the file with an empty brack
 ## 🌐 Browsers
 To make sure the app works for as many people as possible, I performed some browser tests in Chrome, Firefox, Safari and Brave for Mac iOS and Chrome, Firefox, Internet Explorer and Edge for Windows and Safari and Chrome for iOS.
 
-Because the app works without any JavaScript or CSS it works pretty much anywhere. For clients that support JavaScript and [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams#browser_compatibility) I added functionality to prevent the browser from reloading after changing the shirt settings and an enhancement that shows the text in the shirt without having to click the text update button.
+Because the app works without any JavaScript or CSS it works pretty much anywhere. For clients that support JavaScript and [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams#browser_compatibility) I added functionality to prevent the browser from reloading after changing the shirt settings and an enhancement that shows the text in the shirt without having to click the text update button. The way the buttons send input to the backend is by using [inputs with type=submit](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#browser_compatibility). 
 
 Internet Explorer and Safari for iOS had some styling issues, Internet Explorer most likely suffered from the use of CSS variables which it doesn't support. iOS always has some weird and different styling rules for inputs and buttons. But because the app works even without CSS both versions were still fully functional.
 

@@ -6,7 +6,7 @@ html {
   --color-red: #7a0a0c;
   --color-text: var(--color-white);
   --color-background: var(--color-black);
-  --color-blue: #175469;
+  --color-blue: #174169;
   --max-content-width: 70rem;
 
   font-size: calc(55% + 0.8vmin);

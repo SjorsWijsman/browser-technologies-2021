@@ -14,21 +14,34 @@
       <%- include('partials/shirt') %>
     </section>
     <section class="options-container">
-      <form action="/" method="post">
+      <form action="/" method="post" id="shirt-settings">
         <fieldset>
           <legend>Text:</legend>
           <input type="text" name="text" placeholder="Your text here"
             maxlength="20" value="<%= locals.text %>" oninput="updateText(this)">
-          <button type="submit" id="text-update-button">Update</button>
         </fieldset>
-      </form>
-      <form action="/" method="post" id="shirt-settings">
         <% for (setting of Object.keys(shirtData)) { %>
           <fieldset>
-            <legend><%= shirtData[setting].title %>:</legend>
-            <%- include('partials/button-list', {valueList: shirtData[setting].options, name: setting}) %>
+            <legend><%=  shirtData[setting].title %></legend>
+            <% for (option of shirtData[setting].options) { %>
+              <input
+                type="radio"
+                id="<%= option %>"
+                name="<%= setting %>"
+                value="<%= option %>"
+                <% if (locals[setting]) { %>
+                  <% if (locals[setting] === option) { %>
+                    checked
+                  <% } %>
+                <% } else if (shirtData[setting].default === option){ %>
+                  checked
+                <% } %>
+                >
+              <label class="radio" for="<%= option %>"><%= option %></label>
+            <% } %>
           </fieldset>
         <% } %>
+        <button type="submit" id="submit-button">Update Shirt Settings</button>
       </form>
       <form action="/shirts" method="post">
         <button type="submit" class="confirm">Save Shirt</button>

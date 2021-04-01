@@ -20,7 +20,7 @@
               <% for (setting of Object.keys(shirtData)) { %>
                 <%= userData.shirts[shirt][setting] %>
               <% } if (userData.shirts[shirt].text) { %>
-                - <%= userData.shirts[shirt].text %>
+                - <%= userData.shirts[shirt].text.replace('+', ' ') %>
               <% } %>
               </a>
               <form action="ordershirt/<%= i %>" method="post">

@@ -37,6 +37,8 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const queryString = queryToObject(req.headers.referer);
 
+  console.log(req.body)
+
   let query = {
     ...queryString,
     ...req.body,

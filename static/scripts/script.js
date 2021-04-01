@@ -1,8 +1,10 @@
 // Remove text update button if URLSearchParams are available
 if ('URLSearchParams' in window) {
   // Remove text update button
-  const button = document.getElementById('text-update-button');
-  if (button) button.remove();
+  const textButton = document.getElementById('text-update-button');
+  if (textButton) textButton.remove();
+  const submitButton = document.getElementById('submit-button');
+  if (submitButton) submitButton.remove();
 
   // Select shirt setting form & buttons
   const form = document.getElementById('shirt-settings');
@@ -17,12 +19,6 @@ if ('URLSearchParams' in window) {
   for (const button of buttons) {
     button.onclick = (event) => {
       updateQueryValue(event.target.name, event.target.value)
-      // Set active class to self
-      const sameButtons = document.querySelectorAll(`input[name='${event.target.name}']`)
-      for (const sameButton of [...sameButtons]) {
-        sameButton.classList.remove('active')
-      }
-      event.target.classList.add('active')
     }
   }
 }

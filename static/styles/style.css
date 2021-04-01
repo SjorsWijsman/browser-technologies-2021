@@ -6,6 +6,7 @@ html {
   --color-red: #7a0a0c;
   --color-text: var(--color-white);
   --color-background: var(--color-black);
+  --color-blue: #175469;
   --max-content-width: 70rem;
 
   font-size: calc(55% + 0.8vmin);
@@ -118,6 +119,14 @@ input[type="submit"], button, a.button {
   cursor: pointer;
   flex-basis: 100%;
   text-decoration: none;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover, input[type="submit"]:focus,
+button:hover, button:focus,
+a.button:hover, a.button:focus {
+  -webkit-filter: brightness(1.2);
+  filter: brightness(1.2);
 }
 
 input[type="submit"].active {
@@ -207,4 +216,36 @@ li:first-child {
 
 ol > :nth-child(even) {
   background-color: var(--color-black-light);
+}
+
+
+
+input[type="radio"] {
+  opacity: 0.0001;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+}
+
+input[type="radio"] + label {
+  display: block;
+  color: var(--color-background);
+  background-color: var(--color-white);
+  text-align: center;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 0;
+  cursor: pointer;
+  flex-basis: 100%;
+  text-decoration: none;
+}
+
+input[type="radio"]:checked + label {
+  color: var(--color-white);
+  background-color: var(--color-blue);
+}
+
+input[type="radio"]:focus + label {
+  -webkit-filter: brightness(1.5);
+  filter: brightness(1.5);
 }
